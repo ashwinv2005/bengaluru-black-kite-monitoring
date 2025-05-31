@@ -339,3 +339,62 @@ sampling_daily = data %>%
   reframe(lists = n())
 
 write.csv(sampling_daily, "sample_size_daily.csv", row.names = F)
+
+
+## time of day
+
+res_time = data_std %>%
+  group_by(name,period_time) %>%
+  mutate(OBSERVATION.COUNT = as.numeric(OBSERVATION.COUNT)) %>%
+  reframe(cil = bootst(OBSERVATION.COUNT)[1],
+          mean = bootst(OBSERVATION.COUNT)[2],
+          ciu = bootst(OBSERVATION.COUNT)[3])
+
+pd = position_dodge(0.55)
+
+ggp = ggplot(res_time, 
+             aes(x=period_time, y=mean, col = factor(name), fill = factor(name))) + 
+  geom_col(width = 0.5, position = pd) +
+  geom_errorbar(aes(ymin = cil, ymax = ciu), linewidth = 0.3, 
+                width = 0.1, position = pd, col = "black") +
+  xlab("Time of Day") +
+  ylab("Mean count")
+
+ggp1 = ggp +
+  theme(text=element_text(family="Gill Sans MT")) +
+  theme(axis.line.x=element_blank(),
+        axis.text.x=element_text(size = 12),
+        axis.text.y=element_text(size = 14, margin = margin(r = -15)),
+        axis.ticks.x=element_blank(),
+        axis.ticks.y=element_blank(),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        plot.margin=unit(c(0,0,0,0.5), "cm"),
+        panel.border = element_blank(),
+        plot.title = element_text(hjust = 0.5),
+        panel.background = element_blank())+
+  theme(legend.title = element_blank(), legend.text = element_text(size = 12),
+        legend.position = "bottom")  +
+  scale_colour_manual(
+    breaks = c("Inside ban radius", "Outside ban radius"),
+    values = cols[c(1,2)],
+    labels = c("Inside ban radius", "Outside ban radius")
+  ) +
+  scale_fill_manual(
+    breaks = c("Inside ban radius", "Outside ban radius"),
+    values = cols[c(1,2)],
+    labels = c("Inside ban radius", "Outside ban radius")
+  ) +
+  theme(strip.text.x = element_text(size = 15))+
+  guides(fill = guide_legend(nrow = 1)) +
+  ggtitle("Kite count per checklist") +
+  theme(plot.title = element_text(size = 28))
+
+
+
+n1 = paste("count_time_of_day.jpg",sep="")
+
+print(ggp1)
+ggsave(file=n1, units="in", width=10, height=7)
