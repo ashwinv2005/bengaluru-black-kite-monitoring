@@ -1,0 +1,25 @@
+"period_coarse","name","period_time","lists_coarse","min_samp_coarse"
+"Start of ban","Inside ban radius","Morning",73,64
+"Start of ban","Inside ban radius","Afternoon",67,64
+"Start of ban","Inside ban radius","Evening",64,64
+"Start of ban","Outside ban radius","Morning",61,54
+"Start of ban","Outside ban radius","Afternoon",54,54
+"Start of ban","Outside ban radius","Evening",59,54
+"Before Aero Show","Inside ban radius","Morning",48,37
+"Before Aero Show","Inside ban radius","Afternoon",37,37
+"Before Aero Show","Inside ban radius","Evening",39,37
+"Before Aero Show","Outside ban radius","Morning",24,24
+"Before Aero Show","Outside ban radius","Afternoon",33,24
+"Before Aero Show","Outside ban radius","Evening",36,24
+"During Aero Show","Inside ban radius","Morning",51,50
+"During Aero Show","Inside ban radius","Afternoon",50,50
+"During Aero Show","Inside ban radius","Evening",50,50
+"During Aero Show","Outside ban radius","Morning",41,29
+"During Aero Show","Outside ban radius","Afternoon",29,29
+"During Aero Show","Outside ban radius","Evening",34,29
+"After Aero Show","Inside ban radius","Morning",62,42
+"After Aero Show","Inside ban radius","Afternoon",49,42
+"After Aero Show","Inside ban radius","Evening",42,42
+"After Aero Show","Outside ban radius","Morning",39,25
+"After Aero Show","Outside ban radius","Afternoon",25,25
+"After Aero Show","Outside ban radius","Evening",28,25
